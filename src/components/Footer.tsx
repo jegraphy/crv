@@ -21,13 +21,13 @@ const icons = {
 
 export default function Footer() {
   return (
-    <footer className="sticky bottom-0 bg-gray-900/80 backdrop-blur-sm border-t border-gray-800 flex flex-col items-center space-y-4 py-6 text-sm text-secondary">
+    <footer className="sticky bottom-0 bg-gray-900/80 backdrop-blur-sm border-t border-gray-800 flex flex-col items-center space-y-4 py-6 text-sm text-secondary z-50">
       <div className="flex space-x-4">
         <Link 
           href="https://x.com/cerverse" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="hover:text-primary" 
+          className="hover:text-primary cursor-pointer" 
           aria-label="X (Twitter)"
         >
           {icons.x}

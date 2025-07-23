@@ -11,6 +11,7 @@
 html {
   height: 100%;
   overflow-x: hidden;
+  background: #131825;
 }
 
 body {
@@ -24,9 +25,21 @@ body {
   color: #94a3b8;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 #__next {
   min-height: 100vh;
   height: 100%;
+  background: #131825;
+}
+
+main {
+  min-height: 100vh;
+  background: #131825;
+  background: linear-gradient(180deg, #131825 0%, #17253e 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
