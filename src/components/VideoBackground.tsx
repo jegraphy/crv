@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 const videos = [
   'v1.mp4',
@@ -16,6 +16,7 @@ export default function VideoBackground() {
   const [selectedVideo, setSelectedVideo] = useState<string>('');
   const [videoError, setVideoError] = useState(false);
   const [debugInfo, setDebugInfo] = useState<string>('');
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     // Random video seç
@@ -47,6 +48,24 @@ export default function VideoBackground() {
     console.log('Environment:', process.env.NODE_ENV);
   }, []);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Video yüklendiğinde ayarları yap
+    const handleLoadedMetadata = () => {
+      // Yavaş oynatma (0.5x speed - yarı hız)
+      video.playbackRate = 0.5;
+      console.log('Video loaded, playback rate set to 0.5x');
+    };
+
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    
+    return () => {
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+    };
+  }, []);
+
   const handleVideoError = (e: any) => {
     console.error('Video loading failed:', selectedVideo);
     console.error('Error details:', e);
@@ -66,6 +85,7 @@ export default function VideoBackground() {
     <div className="fixed inset-0 z-0">
       {!videoError ? (
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -99,6 +119,11 @@ export default function VideoBackground() {
           <p className="mt-2">Video URL: {selectedVideo}</p>
           <p>Error: {videoError ? 'Yes' : 'No'}</p>
           <p>Environment: {process.env.NODE_ENV}</p>
+          <p>Playback Rate: {videoRef.current?.playbackRate || 'N/A'}</p>
+          <p>Current Time: {videoRef.current?.currentTime?.toFixed(2) || 'N/A'}s</p>
+          <p>Duration: {videoRef.current?.duration?.toFixed(2) || 'N/A'}s</p>
+          <p>Paused: {videoRef.current?.paused ? 'Yes' : 'No'}</p>
+          <p>Loop: {videoRef.current?.loop ? 'Yes' : 'No'}</p>
         </div>
       )}
       
