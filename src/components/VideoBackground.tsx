@@ -28,23 +28,26 @@ export default function VideoBackground() {
       origin: typeof window !== 'undefined' ? window.location.origin : 'server',
       pathname: typeof window !== 'undefined' ? window.location.pathname : 'server',
       videoName,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      isProduction: process.env.NODE_ENV === 'production'
     };
     
     setDebugInfo(JSON.stringify(debug, null, 2));
     
-    // Video URL'ini oluştur
+    // Video URL'ini oluştur - sadece relative path kullan
     const videoUrl = `/video/${videoName}`;
     setSelectedVideo(videoUrl);
     
     // Console'a debug bilgisi yazdır
     console.log('VideoBackground Debug:', debug);
     console.log('Selected Video URL:', videoUrl);
+    console.log('Environment:', process.env.NODE_ENV);
   }, []);
 
   const handleVideoError = (e: any) => {
     console.error('Video loading failed:', selectedVideo);
     console.error('Error details:', e);
+    console.error('Current URL:', window.location.href);
     setVideoError(true);
   };
 
@@ -92,6 +95,7 @@ export default function VideoBackground() {
           <pre className="whitespace-pre-wrap">{debugInfo}</pre>
           <p className="mt-2">Video URL: {selectedVideo}</p>
           <p>Error: {videoError ? 'Yes' : 'No'}</p>
+          <p>Environment: {process.env.NODE_ENV}</p>
         </div>
       )}
       
