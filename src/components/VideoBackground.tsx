@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from 'react';
 
 const videos = [
-  '/video/v1.mp4',
-  '/video/v2.mp4',
-  '/video/v3.mp4',
-  '/video/v4.mp4',
-  '/video/v5.mp4',
-  '/video/v6.mp4',
-  '/video/v7.mp4',
+  'v1.mp4',
+  'v2.mp4',
+  'v3.mp4',
+  'v4.mp4',
+  'v5.mp4',
+  'v6.mp4',
+  'v7.mp4',
 ];
 
 export default function VideoBackground() {
@@ -18,7 +18,13 @@ export default function VideoBackground() {
   useEffect(() => {
     // Random video seç
     const randomIndex = Math.floor(Math.random() * videos.length);
-    setSelectedVideo(videos[randomIndex]);
+    const videoName = videos[randomIndex];
+    
+    // Base URL'i otomatik algıla
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+    const videoPath = `${baseUrl}/video/${videoName}`;
+    
+    setSelectedVideo(videoPath);
   }, []);
 
   if (!selectedVideo) {
