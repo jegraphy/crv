@@ -2,9 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 
 const icons = {
-  twitter: (
+  x: (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-      <path d="M24 4.557a9.93 9.93 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.94 13.94 0 011.671 3.149a4.916 4.916 0 001.523 6.555A4.897 4.897 0 01.96 9.1v.062a4.915 4.915 0 003.946 4.814 4.93 4.93 0 01-2.212.084 4.919 4.919 0 004.588 3.417A9.867 9.867 0 010 19.54a13.94 13.94 0 007.548 2.212c9.056 0 14.01-7.514 14.01-14.02 0-.214-.004-.425-.014-.636A10.012 10.012 0 0024 4.557z" />
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
     </svg>
   ),
   discord: (
@@ -21,17 +21,33 @@ const icons = {
 
 export default function Footer() {
   return (
-    <footer className="mt-16 flex flex-col items-center space-y-4 py-6 text-sm text-secondary">
+    <footer className="sticky bottom-0 bg-gray-900/80 backdrop-blur-sm border-t border-gray-800 flex flex-col items-center space-y-4 py-6 text-sm text-secondary">
       <div className="flex space-x-4">
-        <Link href="#" className="hover:text-primary" aria-label="Twitter">
-          {icons.twitter}
+        <Link 
+          href="https://x.com/cerverse" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hover:text-primary" 
+          aria-label="X (Twitter)"
+        >
+          {icons.x}
         </Link>
-        <Link href="#" className="hover:text-primary" aria-label="Discord">
-          {icons.discord}
-        </Link>
-        <Link href="#" className="hover:text-primary" aria-label="Telegram">
-          {icons.telegram}
-        </Link>
+        <div className="relative group">
+          <div className="hover:text-primary cursor-pointer" aria-label="Discord">
+            {icons.discord}
+          </div>
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+            soon
+          </div>
+        </div>
+        <div className="relative group">
+          <div className="hover:text-primary cursor-pointer" aria-label="Telegram">
+            {icons.telegram}
+          </div>
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+            soon
+          </div>
+        </div>
       </div>
       <div>&copy; {new Date().getFullYear()} Cerverse</div>
     </footer>
