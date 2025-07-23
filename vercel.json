@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "app/**/*.tsx": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/video/(.*)",
@@ -25,12 +20,6 @@
           "value": "bytes"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/video/:path*",
-      "destination": "/video/:path*"
     }
   ]
 } 
