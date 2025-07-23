@@ -30,10 +30,10 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, isOpen, 
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-[9800px] opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-[900px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="pb-4 text-secondary leading-relaxed open-sans-light">
+        <div className="pb-4 text-secondary leading-relaxed open-sans-light max-h-[500px] overflow-y-auto custom-scrollbar">
           {children}
         </div>
       </div>
