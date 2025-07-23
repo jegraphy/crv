@@ -2,7 +2,7 @@
 export const APP_VERSION = {
   major: 0,
   minor: 1,
-  patch: 11,
+  patch: 12,
   build: process.env.NEXT_PUBLIC_BUILD_NUMBER || '0',
   commit: process.env.NEXT_PUBLIC_COMMIT_HASH || 'dev',
   date: process.env.NEXT_PUBLIC_BUILD_DATE || new Date().toISOString().split('T')[0]

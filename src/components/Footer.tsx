@@ -22,19 +22,24 @@ const icons = {
 
 export default function Footer() {
   return (
-    <footer className="sticky bottom-0 bg-gray-900/80 backdrop-blur-sm border-t border-gray-800 flex flex-col items-center space-y-4 py-6 text-sm text-secondary z-50">
+    <footer className="fixed bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm border-t border-gray-800 flex flex-col items-center space-y-4 py-6 text-sm text-secondary z-50">
       <div className="flex space-x-4">
         <Link 
           href="https://x.com/cerverse" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="hover:text-primary cursor-pointer" 
+          className="hover:text-primary cursor-pointer-override" 
           aria-label="X (Twitter)"
+          style={{ cursor: 'pointer' }}
         >
           {icons.x}
         </Link>
         <div className="relative group">
-          <div className="hover:text-primary cursor-pointer" aria-label="Discord">
+          <div 
+            className="hover:text-primary cursor-pointer-override" 
+            aria-label="Discord"
+            style={{ cursor: 'pointer' }}
+          >
             {icons.discord}
           </div>
           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
@@ -42,7 +47,11 @@ export default function Footer() {
           </div>
         </div>
         <div className="relative group">
-          <div className="hover:text-primary cursor-pointer" aria-label="Telegram">
+          <div 
+            className="hover:text-primary cursor-pointer-override" 
+            aria-label="Telegram"
+            style={{ cursor: 'pointer' }}
+          >
             {icons.telegram}
           </div>
           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">

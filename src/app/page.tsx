@@ -1,19 +1,9 @@
 import ComingSoon from '@/components/ComingSoon';
 import Footer from '@/components/Footer';
 
-export default function Page() {
+export default function Home() {
   return (
-    <main 
-      className="min-h-screen"
-      style={{
-        background: 'linear-gradient(180deg, #131825 0%, #17253e 100%)',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        margin: 0,
-        padding: 0
-      }}
-    >
+    <main className="min-h-screen relative">
       <ComingSoon />
       <Footer />
     </main>

@@ -2,56 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset ve temel stiller */
-* {
+/* Custom CSS Variables */
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #9ca3af;
+  --background-start: #0f172a;
+  --background-end: #1e293b;
+}
+
+/* Background gradient */
+body {
+  background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+  min-height: 100vh;
   margin: 0;
   padding: 0;
+}
+
+/* Reset styles */
+* {
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-  overflow-x: hidden;
-  background: #131825;
+/* Custom utility classes */
+@layer components {
+  .text-primary {
+    color: var(--primary-color);
+  }
+  
+  .text-secondary {
+    color: var(--secondary-color);
+  }
+
+  /* Content card */
+  .content-card {
+    @apply backdrop-blur-md bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700/50 rounded-2xl p-8 mx-4 max-w-2xl border-2 border-white;
+  }
+
+
+  /* Cursor pointer override */
+  .cursor-pointer-override {
+    cursor: pointer !important;
+  }
+  
+  .cursor-pointer-override:hover {
+    cursor: pointer !important;
+  }
 }
 
-body {
-  min-height: 100vh;
-  height: 100%;
-  background: #131825;
-  background: linear-gradient(180deg, #131825 0%, #17253e 100%);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #94a3b8;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-#__next {
-  min-height: 100vh;
-  height: 100%;
-  background: #131825;
-}
-
-main {
-  min-height: 100vh;
-  background: #131825;
-  background: linear-gradient(180deg, #131825 0%, #17253e 100%);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Footer ikonları için cursor pointer */
-footer a[href],
-footer div[aria-label] {
-  cursor: pointer !important;
-}
-
-/* Tailwind utility sınıflarının çalıştığından emin olmak için test */
-.test-tailwind {
-  @apply bg-red-500 text-white p-4;
+/* Ensure footer is always visible on mobile */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 120px; /* Footer height + extra space */
+  }
+  
+  footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+  }
 }
