@@ -7,13 +7,19 @@ export default function ComingSoon() {
     <div className="relative min-h-screen">
       <VideoBackground />
       <div className="absolute inset-0 flex items-center justify-center z-10 ">
-        <div className="backdrop-blur-md bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700/50 rounded-2xl p-8 mx-4 max-w-2xl border-1 border-white shadow-xl/30">
+        <div className="backdrop-blur-md bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700/50 rounded-2xl p-8 mx-4 max-w-2xl border-2 border-white">
           <div className="text-left">
             <div className="mb-12">
               <img
-                src="/img/cerverse.svg"
+                src={process.env.NODE_ENV === 'production' ? '/static/img/cerverse.svg' : '/img/cerverse.svg'}
                 alt="Cerverse Logo"
                 className="w-auto h-16 sm:h-20"
+                onError={(e) => {
+                  // Fallback to public folder if static doesn't work
+                  if (e.currentTarget.src.includes('/static/')) {
+                    e.currentTarget.src = '/img/cerverse.svg';
+                  }
+                }}
               />
             </div>
             <h2 className="mt-2 text-xl sm:text-2xl text-primary font-semibold">Create. Engage. Reward.</h2>
