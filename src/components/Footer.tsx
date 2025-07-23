@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { DISPLAY_VERSION } from '@/config/version';
 
 const icons = {
   x: (
@@ -49,7 +50,11 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div>&copy; {new Date().getFullYear()} Cerverse</div>
+      <div className="flex items-center space-x-2">
+        <span>&copy; {new Date().getFullYear()} Cerverse</span>
+        <span className="text-xs text-gray-500">•</span>
+        <span className="text-xs text-gray-400">{DISPLAY_VERSION}</span>
+      </div>
     </footer>
   );
 }

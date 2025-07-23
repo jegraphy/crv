@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Reset ve temel stiller */
 * {
   margin: 0;
   padding: 0;
@@ -42,4 +43,9 @@ main {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* Tailwind utility sınıflarının çalıştığından emin olmak için test */
+.test-tailwind {
+  @apply bg-red-500 text-white p-4;
 }

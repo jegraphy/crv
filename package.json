@@ -1,12 +1,16 @@
 {
   "name": "cerverse-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "version:patch": "node scripts/version-bump.js patch",
+    "version:minor": "node scripts/version-bump.js minor",
+    "version:major": "node scripts/version-bump.js major",
+    "precommit": "npm run version:patch"
   },
   "dependencies": {
     "next": "14.1.4",
