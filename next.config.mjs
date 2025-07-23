@@ -4,6 +4,11 @@ const nextConfig = {
   assetPrefix: process.env.NEXT_PUBLIC_BASE_URL || '',
   basePath: '',
   
+  // Vercel için static dosya optimizasyonu
+  experimental: {
+    optimizeCss: true,
+  },
+  
   // Static dosyalar için headers
   async headers() {
     return [
@@ -21,6 +26,10 @@ const nextConfig = {
           {
             key: 'Content-Type',
             value: 'video/mp4',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
           },
         ],
       },
