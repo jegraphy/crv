@@ -45,6 +45,12 @@ main {
   background-size: cover;
 }
 
+/* Footer ikonları için cursor pointer */
+footer a[href],
+footer div[aria-label] {
+  cursor: pointer !important;
+}
+
 /* Tailwind utility sınıflarının çalıştığından emin olmak için test */
 .test-tailwind {
   @apply bg-red-500 text-white p-4;
