@@ -33,11 +33,15 @@ body {
     color: var(--secondary-color);
   }
 
-  /* Content card */
+  /* Content card - responsive ve eşit genişlik */
   .content-card {
-    @apply backdrop-blur-md bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700/50 rounded-2xl p-8 mx-4 max-w-2xl border-2 border-white;
+    @apply backdrop-blur-md bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700/50 rounded-2xl p-8 mx-4 border-2 border-white;
+    width: min(90vw, 600px);
+    max-width: 600px;
+    min-width: 320px;
+    position: relative;
+    overflow: hidden;
   }
-
 
   /* Cursor pointer override */
   .cursor-pointer-override {
@@ -61,5 +65,25 @@ body {
     left: 0 !important;
     right: 0 !important;
     z-index: 1000 !important;
+  }
+
+  .content-card {
+    width: calc(100vw - 2rem);
+    max-width: none;
+    margin: 0 1rem;
+  }
+}
+
+/* Tablet için */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .content-card {
+    width: min(80vw, 500px);
+  }
+}
+
+/* Desktop için */
+@media (min-width: 1025px) {
+  .content-card {
+    width: 600px;
   }
 }

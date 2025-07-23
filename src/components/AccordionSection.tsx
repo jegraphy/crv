@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import GlassCard from './GlassCard';
 
 interface AccordionItemProps {
   title: string;
@@ -48,7 +49,7 @@ interface AccordionSectionProps {
 
 export default function AccordionSection({ openSection, onSectionToggle }: AccordionSectionProps) {
   return (
-    <div className="content-card">
+    <GlassCard>
       <AccordionItem
         title="About"
         isOpen={openSection === 'about'}
@@ -107,6 +108,6 @@ export default function AccordionSection({ openSection, onSectionToggle }: Accor
           </div>
         </div>
       </AccordionItem>
-    </div>
+    </GlassCard>
   );
 } 

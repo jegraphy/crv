@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import EmailForm from './EmailForm';
 import VideoBackground from './VideoBackground';
 import AccordionSection from './AccordionSection';
+import GlassCard from './GlassCard';
 
 export default function ComingSoon() {
   const [logoSrc, setLogoSrc] = useState(
@@ -29,7 +30,7 @@ export default function ComingSoon() {
       {/* Ana içerik bölümü */}
       <div className="relative z-10 pt-20 pb-8">
         <div className="flex flex-col items-center space-y-8">
-          <div className="content-card">
+          <GlassCard>
             <div className="text-left">
               <div className="mb-12">
                 <img
@@ -49,7 +50,7 @@ export default function ComingSoon() {
               <p className="mt-2 max-w-xl text-secondary">Write, read, and unlock real value with every chapter.</p>
               {/* <EmailForm /> */}
             </div>
-          </div>
+          </GlassCard>
 
           {/* Akordeon bölümü */}
           <AccordionSection 
