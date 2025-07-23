@@ -1,8 +1,21 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import EmailForm from './EmailForm';
 import VideoBackground from './VideoBackground';
 
 export default function ComingSoon() {
+  const [logoSrc, setLogoSrc] = useState(
+    process.env.NODE_ENV === 'production' ? '/static/img/cerverse.svg' : '/img/cerverse.svg'
+  );
+
+  const handleLogoError = () => {
+    // Fallback to public folder if static doesn't work
+    if (logoSrc.includes('/static/')) {
+      setLogoSrc('/img/cerverse.svg');
+    }
+  };
+
   return (
     <div className="relative min-h-screen">
       <VideoBackground />
@@ -11,15 +24,10 @@ export default function ComingSoon() {
           <div className="text-left">
             <div className="mb-12">
               <img
-                src={process.env.NODE_ENV === 'production' ? '/static/img/cerverse.svg' : '/img/cerverse.svg'}
+                src={logoSrc}
                 alt="Cerverse Logo"
                 className="w-auto h-16 sm:h-20"
-                onError={(e) => {
-                  // Fallback to public folder if static doesn't work
-                  if (e.currentTarget.src.includes('/static/')) {
-                    e.currentTarget.src = '/img/cerverse.svg';
-                  }
-                }}
+                onError={handleLogoError}
               />
             </div>
             <h2 className="mt-2 text-xl sm:text-2xl text-primary font-semibold">Create. Engage. Reward.</h2>
