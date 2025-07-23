@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/video/(.*)",
+      "source": "/static/video/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

@@ -34,8 +34,11 @@ export default function VideoBackground() {
     
     setDebugInfo(JSON.stringify(debug, null, 2));
     
-    // Video URL'ini oluştur - Vercel için optimize edilmiş
-    const videoUrl = `/video/${videoName}`;
+    // Video URL'ini oluştur - Vercel'de /static/video/ çalışıyor
+    const videoUrl = process.env.NODE_ENV === 'production' 
+      ? `/static/video/${videoName}` 
+      : `/video/${videoName}`;
+    
     setSelectedVideo(videoUrl);
     
     // Console'a debug bilgisi yazdır
@@ -48,17 +51,7 @@ export default function VideoBackground() {
     console.error('Video loading failed:', selectedVideo);
     console.error('Error details:', e);
     console.error('Current URL:', window.location.href);
-    
-    // Vercel'de video dosyası bulunamazsa static klasörü dene
-    if (process.env.NODE_ENV === 'production' && !selectedVideo.includes('/static/')) {
-      const videoName = selectedVideo.split('/').pop();
-      const staticUrl = `/static/video/${videoName}`;
-      console.log('Trying static folder:', staticUrl);
-      setSelectedVideo(staticUrl);
-      setVideoError(false);
-    } else {
-      setVideoError(true);
-    }
+    setVideoError(true);
   };
 
   const handleVideoLoad = () => {
