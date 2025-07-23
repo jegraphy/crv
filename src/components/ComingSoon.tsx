@@ -13,7 +13,7 @@ export default function ComingSoon() {
         Cerverse is the on-chain platform where visionary writers create and share interactive stories, while readers earn as they explore. Here, every story is an opportunity, every interaction, a chance to be rewarded.
       </p>
       <p className="mt-2 max-w-xl text-secondary">Write, read, and unlock real value with every chapter.</p>
-      <EmailForm />
+      {/* <EmailForm /> */}
     </div>
   );
 }
