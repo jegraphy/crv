@@ -18,9 +18,19 @@ const nextConfig = {
             key: 'Access-Control-Allow-Origin',
             value: '*',
           },
+          {
+            key: 'Content-Type',
+            value: 'video/mp4',
+          },
         ],
       },
     ];
+  },
+
+  // Static export için ayarlar
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
   },
 };
 
